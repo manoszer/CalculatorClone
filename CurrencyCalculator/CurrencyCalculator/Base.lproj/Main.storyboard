@@ -1,24 +1,364 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMW-en-B2j">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Calculator View Controller-->
+        <scene sceneID="cBU-5W-OZc">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="YMW-en-B2j" customClass="CalculatorViewController" customModule="CurrencyCalculator" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EeO-1K-3v6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8iG-6B-3Fo">
+                                <rect key="frame" x="5" y="222" width="365" height="440"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="KJV-Da-HIS">
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCQ-Hl-Qaa" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                                <state key="normal" title="AC"/>
+                                                <connections>
+                                                    <action selector="instantOperationButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="iwf-Hg-ZO7"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-li-K8c" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="95" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="+/-"/>
+                                                <connections>
+                                                    <action selector="instantOperationButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="4fH-4m-IAf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbP-DM-HJs" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="190" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="%"/>
+                                                <connections>
+                                                    <action selector="instantOperationButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="JYu-4f-khF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9F-6b-xlj" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="285" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="/"/>
+                                                <connections>
+                                                    <action selector="operandButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="hUw-yR-kza"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1iu-ep-Awc">
+                                        <rect key="frame" x="0.0" y="90" width="365" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBe-t6-Ct6" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="OBe-t6-Ct6" secondAttribute="height" multiplier="1:1" id="0Cs-R6-pPo"/>
+                                                </constraints>
+                                                <state key="normal" title="7"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="Btk-BF-NEB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2Q-D8-e1S" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="95" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="8"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="bi7-jH-lWD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLU-mz-bvS" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="190" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="9"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="SfO-aZ-Sc1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVc-h3-ePH" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="285" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="x"/>
+                                                <connections>
+                                                    <action selector="operandButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="t8p-Kc-y5N"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-pG-hNn">
+                                        <rect key="frame" x="0.0" y="180" width="365" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl4-qG-UJb" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="4"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="mxY-yT-SoA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3br-3N-rgv" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="95" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="5"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="bPH-OH-1BI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cc3-2g-9Af" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="190" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="6"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="h6s-1b-s7O"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3s-Em-Xgg" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="285" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="-"/>
+                                                <connections>
+                                                    <action selector="operandButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="BsH-17-K1Y"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2S9-xQ-CUW">
+                                        <rect key="frame" x="0.0" y="270" width="365" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDC-7y-jhl" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="1"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="7xg-j7-i0Q"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7w-Om-0Vb" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="95" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="2"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="CAb-jZ-ae4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bh-Gz-2sM" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="190" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="3"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="2ar-ys-bTM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPh-wq-Y1P" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="285" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="operandButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="ibX-YB-g8c"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jPb-Hp-ep3">
+                                        <rect key="frame" x="0.0" y="360" width="365" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsW-ju-Hcn" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="80"/>
+                                                <state key="normal" title="0"/>
+                                                <connections>
+                                                    <action selector="numberButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="PwY-0q-Q2D"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKh-bQ-Pv9" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="190.5" y="0.0" width="80" height="80"/>
+                                                <state key="normal" title="."/>
+                                                <connections>
+                                                    <action selector="decimalButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="Aoc-S4-rXg"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1l-Fc-tFq" customClass="CalculatorButton" customModule="CurrencyCalculator">
+                                                <rect key="frame" x="285.5" y="0.0" width="79.5" height="80"/>
+                                                <state key="normal" title="="/>
+                                                <connections>
+                                                    <action selector="instantOperationButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="iT4-YV-dJJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2S9-xQ-CUW" firstAttribute="leading" secondItem="8iG-6B-3Fo" secondAttribute="leading" id="23a-MS-l25"/>
+                                    <constraint firstAttribute="trailing" secondItem="jPb-Hp-ep3" secondAttribute="trailing" id="4PT-5n-1BP"/>
+                                    <constraint firstAttribute="trailing" secondItem="2S9-xQ-CUW" secondAttribute="trailing" id="6K3-FQ-RG0"/>
+                                    <constraint firstItem="uKh-bQ-Pv9" firstAttribute="width" secondItem="1Bh-Gz-2sM" secondAttribute="width" id="809-L5-lAq"/>
+                                    <constraint firstItem="J1l-Fc-tFq" firstAttribute="width" secondItem="1Bh-Gz-2sM" secondAttribute="width" id="DCV-Dm-qja"/>
+                                    <constraint firstAttribute="trailing" secondItem="AWr-pG-hNn" secondAttribute="trailing" id="ODt-0m-KcP"/>
+                                    <constraint firstItem="AWr-pG-hNn" firstAttribute="leading" secondItem="8iG-6B-3Fo" secondAttribute="leading" id="Qam-tn-RYA"/>
+                                    <constraint firstAttribute="trailing" secondItem="KJV-Da-HIS" secondAttribute="trailing" id="RcE-Sq-u7t"/>
+                                    <constraint firstItem="KJV-Da-HIS" firstAttribute="leading" secondItem="8iG-6B-3Fo" secondAttribute="leading" id="fAo-JZ-xFJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="1iu-ep-Awc" secondAttribute="trailing" id="oE7-8a-HLt"/>
+                                    <constraint firstItem="1iu-ep-Awc" firstAttribute="leading" secondItem="8iG-6B-3Fo" secondAttribute="leading" id="qS2-ng-Cp1"/>
+                                    <constraint firstItem="jPb-Hp-ep3" firstAttribute="leading" secondItem="8iG-6B-3Fo" secondAttribute="leading" id="ymy-s6-uiD"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqQ-wf-5Op">
+                                <rect key="frame" x="0.0" y="111" width="375" height="111"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" minimumScaleFactor="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="Iix-Mv-VGy">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="111"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="70"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JL-V7-UeZ">
+                                        <rect key="frame" x="295" y="33.5" width="70" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="PO7-7k-Ypx"/>
+                                            <constraint firstAttribute="height" constant="44" id="WwH-nE-OvB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="19"/>
+                                        <state key="normal" title="EUR">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sourceCurrencyButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="8Rp-n7-CWY"/>
+                                        </connections>
+                                    </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mzH-dn-zl7">
+                                        <rect key="frame" x="370" y="30.5" width="0.0" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="999" id="7N3-LH-xyZ"/>
+                                            <constraint firstAttribute="height" constant="50" id="TzQ-Pb-h24"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Irx-Tg-0U3">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mzH-dn-zl7" firstAttribute="centerY" secondItem="1JL-V7-UeZ" secondAttribute="centerY" id="4TV-8e-fKG"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iix-Mv-VGy" secondAttribute="bottom" id="6MB-vy-gaE"/>
+                                    <constraint firstAttribute="trailing" secondItem="mzH-dn-zl7" secondAttribute="trailing" constant="5" id="6f7-uS-Tf5"/>
+                                    <constraint firstItem="Iix-Mv-VGy" firstAttribute="top" secondItem="uqQ-wf-5Op" secondAttribute="top" id="P6g-qN-5cv"/>
+                                    <constraint firstItem="Iix-Mv-VGy" firstAttribute="leading" secondItem="uqQ-wf-5Op" secondAttribute="leading" id="cne-9d-QKN"/>
+                                    <constraint firstItem="1JL-V7-UeZ" firstAttribute="centerY" secondItem="Iix-Mv-VGy" secondAttribute="centerY" id="f83-Ho-6qj"/>
+                                    <constraint firstItem="1JL-V7-UeZ" firstAttribute="leading" secondItem="Iix-Mv-VGy" secondAttribute="trailing" constant="5" id="vrS-h6-JdP"/>
+                                    <constraint firstItem="mzH-dn-zl7" firstAttribute="leading" secondItem="1JL-V7-UeZ" secondAttribute="trailing" constant="5" id="yKS-qo-ogB"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1X-6H-xM2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="equals to 0" textAlignment="right" lineBreakMode="tailTruncation" minimumScaleFactor="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="UOI-Vo-YJu">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="111"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARJ-Ze-YXa">
+                                        <rect key="frame" x="305" y="35.5" width="60" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="Sd1-nU-hqm"/>
+                                            <constraint firstAttribute="height" constant="40" id="sFW-rR-0uN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="19"/>
+                                        <state key="normal" title="USD">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sourceCurrencyButtonTapped:" destination="YMW-en-B2j" eventType="touchUpInside" id="XeP-ou-ssr"/>
+                                        </connections>
+                                    </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2cX-sZ-mVN">
+                                        <rect key="frame" x="370" y="30.5" width="0.0" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="999" id="13B-Nd-iYB"/>
+                                            <constraint firstAttribute="height" constant="50" id="Dus-JP-kmP"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YMf-Hw-hGc">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2cX-sZ-mVN" firstAttribute="centerY" secondItem="ARJ-Ze-YXa" secondAttribute="centerY" id="Fqx-38-SaP"/>
+                                    <constraint firstAttribute="trailing" secondItem="2cX-sZ-mVN" secondAttribute="trailing" constant="5" id="J63-Ok-jZh"/>
+                                    <constraint firstItem="UOI-Vo-YJu" firstAttribute="top" secondItem="e1X-6H-xM2" secondAttribute="top" id="MNc-xx-o83"/>
+                                    <constraint firstItem="2cX-sZ-mVN" firstAttribute="leading" secondItem="ARJ-Ze-YXa" secondAttribute="trailing" constant="5" id="ZOU-HA-VG4"/>
+                                    <constraint firstAttribute="bottom" secondItem="UOI-Vo-YJu" secondAttribute="bottom" id="d2t-tx-l7J"/>
+                                    <constraint firstItem="ARJ-Ze-YXa" firstAttribute="centerY" secondItem="UOI-Vo-YJu" secondAttribute="centerY" id="dhc-xJ-xMA"/>
+                                    <constraint firstItem="UOI-Vo-YJu" firstAttribute="leading" secondItem="e1X-6H-xM2" secondAttribute="leading" id="hE5-2g-WOJ"/>
+                                    <constraint firstItem="ARJ-Ze-YXa" firstAttribute="leading" secondItem="UOI-Vo-YJu" secondAttribute="trailing" constant="5" id="oXS-fJ-JGo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Okh-WM-IIJ" firstAttribute="bottom" secondItem="8iG-6B-3Fo" secondAttribute="bottom" constant="5" id="0vc-HK-bJx"/>
+                            <constraint firstItem="Okh-WM-IIJ" firstAttribute="trailing" secondItem="8iG-6B-3Fo" secondAttribute="trailing" constant="5" id="3y2-mE-feK"/>
+                            <constraint firstItem="e1X-6H-xM2" firstAttribute="trailing" secondItem="Okh-WM-IIJ" secondAttribute="trailing" id="5so-yY-fDv"/>
+                            <constraint firstItem="8iG-6B-3Fo" firstAttribute="top" secondItem="uqQ-wf-5Op" secondAttribute="bottom" id="DlS-az-SZ6"/>
+                            <constraint firstItem="e1X-6H-xM2" firstAttribute="top" secondItem="EeO-1K-3v6" secondAttribute="top" id="eK9-Xz-Uri"/>
+                            <constraint firstItem="uqQ-wf-5Op" firstAttribute="top" secondItem="e1X-6H-xM2" secondAttribute="bottom" id="fBz-ug-SNW"/>
+                            <constraint firstItem="e1X-6H-xM2" firstAttribute="height" secondItem="uqQ-wf-5Op" secondAttribute="height" id="g0h-ud-W6Y"/>
+                            <constraint firstItem="8iG-6B-3Fo" firstAttribute="leading" secondItem="Okh-WM-IIJ" secondAttribute="leading" constant="5" id="kJB-NR-rff"/>
+                            <constraint firstItem="e1X-6H-xM2" firstAttribute="leading" secondItem="Okh-WM-IIJ" secondAttribute="leading" id="l5Z-Jw-ZLw"/>
+                            <constraint firstItem="uqQ-wf-5Op" firstAttribute="leading" secondItem="Okh-WM-IIJ" secondAttribute="leading" id="qnN-u2-bg4"/>
+                            <constraint firstItem="Okh-WM-IIJ" firstAttribute="trailing" secondItem="uqQ-wf-5Op" secondAttribute="trailing" id="xZh-vb-ICH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Okh-WM-IIJ"/>
                     </view>
+                    <connections>
+                        <outlet property="clearButton" destination="fCQ-Hl-Qaa" id="zad-EA-vzR"/>
+                        <outlet property="decimalButton" destination="uKh-bQ-Pv9" id="suy-dN-2Bo"/>
+                        <outlet property="divideButton" destination="s9F-6b-xlj" id="rEI-a0-xEC"/>
+                        <outlet property="eightButton" destination="A2Q-D8-e1S" id="wvS-Vt-tBB"/>
+                        <outlet property="equalButton" destination="J1l-Fc-tFq" id="GQ9-lk-cVw"/>
+                        <outlet property="exchangeButton" destination="ARJ-Ze-YXa" id="js4-i6-jxY"/>
+                        <outlet property="exchangeCollectionView" destination="2cX-sZ-mVN" id="hAH-w2-GHm"/>
+                        <outlet property="exchangeCollectionViewWidthConstraint" destination="13B-Nd-iYB" id="kDI-RO-Ivd"/>
+                        <outlet property="exchangeLabel" destination="UOI-Vo-YJu" id="3AX-74-d0Z"/>
+                        <outlet property="exchangeView" destination="e1X-6H-xM2" id="esu-Na-wQB"/>
+                        <outlet property="fiveButton" destination="3br-3N-rgv" id="ceU-RH-Z8o"/>
+                        <outlet property="fourButton" destination="Pl4-qG-UJb" id="RI1-Dq-v1x"/>
+                        <outlet property="minusButton" destination="M3s-Em-Xgg" id="h2X-ie-j0z"/>
+                        <outlet property="multuplyButton" destination="kVc-h3-ePH" id="zUa-nh-5hX"/>
+                        <outlet property="negativeButton" destination="Sln-li-K8c" id="hMq-54-hnJ"/>
+                        <outlet property="nineButton" destination="dLU-mz-bvS" id="TK4-5n-PUh"/>
+                        <outlet property="oneButton" destination="kDC-7y-jhl" id="flf-Oi-cas"/>
+                        <outlet property="percentageButton" destination="LbP-DM-HJs" id="g7f-1S-yMQ"/>
+                        <outlet property="plusButton" destination="CPh-wq-Y1P" id="uWl-gt-oRT"/>
+                        <outlet property="sevenButton" destination="OBe-t6-Ct6" id="y1k-kw-dCx"/>
+                        <outlet property="sixButton" destination="cc3-2g-9Af" id="btq-38-6Zf"/>
+                        <outlet property="sourceCollectionView" destination="mzH-dn-zl7" id="XVA-El-10b"/>
+                        <outlet property="sourceCurrencyButton" destination="1JL-V7-UeZ" id="SQ1-bd-Kxz"/>
+                        <outlet property="sourceCurrencyCollectionViewWidthConstraint" destination="7N3-LH-xyZ" id="mZa-59-sCv"/>
+                        <outlet property="threeButton" destination="1Bh-Gz-2sM" id="JEf-3q-OgY"/>
+                        <outlet property="twoButton" destination="T7w-Om-0Vb" id="GHr-Rb-fOl"/>
+                        <outlet property="valueLabel" destination="Iix-Mv-VGy" id="Yeq-ZN-TpO"/>
+                        <outlet property="zeroButton" destination="HsW-ju-Hcn" id="PCp-98-8db"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3z-W1-Si0" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-540" y="113"/>
         </scene>
     </scenes>
 </document>
