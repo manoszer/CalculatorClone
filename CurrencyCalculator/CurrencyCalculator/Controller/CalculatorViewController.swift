@@ -10,25 +10,10 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     @IBOutlet var valueLabel: UILabel!
-    @IBOutlet var zeroButton: CalculatorButton!
-    @IBOutlet var decimalButton: CalculatorButton!
-    @IBOutlet var oneButton: CalculatorButton!
-    @IBOutlet var twoButton: CalculatorButton!
-    @IBOutlet var threeButton: CalculatorButton!
-    @IBOutlet var fourButton: CalculatorButton!
-    @IBOutlet var fiveButton: CalculatorButton!
-    @IBOutlet var sixButton: CalculatorButton!
-    @IBOutlet var sevenButton: CalculatorButton!
-    @IBOutlet var eightButton: CalculatorButton!
-    @IBOutlet var nineButton: CalculatorButton!
+    @IBOutlet var numberButtonsOutletCollection: [CalculatorButton]!
+    @IBOutlet var operandsButtonsOutletCollection: [CalculatorButton]!
+    @IBOutlet var instantOperandsOutletCollection: [CalculatorButton]!
     @IBOutlet var equalButton: CalculatorButton!
-    @IBOutlet var plusButton: CalculatorButton!
-    @IBOutlet var minusButton: CalculatorButton!
-    @IBOutlet var multuplyButton: CalculatorButton!
-    @IBOutlet var divideButton: CalculatorButton!
-    @IBOutlet var percentageButton: CalculatorButton!
-    @IBOutlet var negativeButton: CalculatorButton!
-    @IBOutlet var clearButton: CalculatorButton!
     // Source Amount outlets
     @IBOutlet var sourceCurrencyButton: UIButton!
     @IBOutlet var sourceCollectionView: UICollectionView!
@@ -53,10 +38,8 @@ class CalculatorViewController: UIViewController {
     var sourceCurrency = "EUR"
     var exchangeCurrency: String? {
         didSet {
-            if exchangeCurrency == nil {
-                exchangeView.isHidden = true
-            } else {
-                exchangeView.isHidden = false
+            DispatchQueue.main.async {
+                self.exchangeCurrency == nil ? (self.exchangeView.isHidden = true) : (self.exchangeView.isHidden = false)
             }
         }
     }
@@ -120,17 +103,17 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Setup UI
     func setupButtonsUI() {
-        for button in [zeroButton, decimalButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton] {
-            button?.colorUpButton(color: ColorPalette.darkGray)
-            button?.createButtonsAnimation()
+        for button in numberButtonsOutletCollection {
+            button.colorUpButton(color: ColorPalette.darkGray)
+            button.createButtonsAnimation()
         }
-        for button in [plusButton, minusButton, multuplyButton, divideButton] {
-            button?.colorUpButton(color: ColorPalette.orange)
+        for button in operandsButtonsOutletCollection {
+            button.colorUpButton(color: ColorPalette.orange)
         }
-        for button in [percentageButton, negativeButton, clearButton] {
-            button?.colorUpButton(color: ColorPalette.lightGray)
-            button?.colorUpText(color: UIColor.black)
-            button?.createButtonsAnimation()
+        for button in instantOperandsOutletCollection {
+            button.colorUpButton(color: ColorPalette.lightGray)
+            button.colorUpText(color: UIColor.black)
+            button.createButtonsAnimation()
         }
         equalButton.colorUpButton(color: ColorPalette.orange)
         equalButton.createButtonsAnimation()
@@ -155,7 +138,7 @@ class CalculatorViewController: UIViewController {
     // collection view animation methods
     func expandCollectionView(collectionView: UICollectionView, withWidthConstraint:NSLayoutConstraint) {
         UIView.animate(withDuration: 0.3, animations: {
-            withWidthConstraint.constant = self.view.bounds.width - 80
+            withWidthConstraint.constant = self.view.bounds.width - 70
             self.view.layoutIfNeeded()
         })
     }
@@ -168,9 +151,9 @@ class CalculatorViewController: UIViewController {
     }
     // Checks if any of the operand buttons is already selected and desects it if needed
     func deselectPreviousButtonIfNeeded() {
-        for button in [plusButton, minusButton, multuplyButton, divideButton] {
-            if button?.titleLabel?.text == selectedAction {
-                button?.animateOperandDeselection()
+        for button in operandsButtonsOutletCollection {
+            if button.titleLabel?.text == selectedAction {
+                button.animateOperandDeselection()
             }
         }
     }
@@ -204,6 +187,12 @@ class CalculatorViewController: UIViewController {
         
         // make calculation with previous operand if exists
         if let operand = selectedAction {
+            // check if just changed operand in order just to update the selected action and not make the calculation
+            if justPressedOperand {
+                selectedAction = sender.titleLabel?.text
+                sender.animateOperandSelection()
+                return
+            }
             result = makeCalculation(operand: operand, firstValue: result, secondValue: displayValue!)
             displayValue = result
         } else {

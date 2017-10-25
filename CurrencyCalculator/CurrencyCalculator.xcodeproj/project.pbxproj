@@ -114,8 +114,8 @@
 				45603C081F9F331700D2918D /* Controller */,
 				45603BF11F9F31D200D2918D /* AppDelegate.swift */,
 				45603BF51F9F31D200D2918D /* Main.storyboard */,
-				45603BF81F9F31D200D2918D /* Assets.xcassets */,
 				45603BFA1F9F31D200D2918D /* LaunchScreen.storyboard */,
+				45603BF81F9F31D200D2918D /* Assets.xcassets */,
 				45603BFD1F9F31D200D2918D /* Info.plist */,
 			);
 			path = CurrencyCalculator;

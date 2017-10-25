@@ -20,6 +20,11 @@ class CalculatorButton: UIButton {
         createButtonUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.rounded(cornerRadius: self.frame.height / 2)
+    }
+    
     override func prepareForInterfaceBuilder() {
         createButtonUI()
     }
@@ -30,8 +35,6 @@ class CalculatorButton: UIButton {
         self.titleLabel?.adjustsFontSizeToFitWidth = true
         
         self.backgroundColor = UIColor.lightGray
-        
-        self.rounded(cornerRadius: self.frame.height / 2)
     }
     
     func createButtonsAnimation() {

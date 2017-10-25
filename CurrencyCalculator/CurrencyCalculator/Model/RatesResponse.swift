@@ -9,7 +9,7 @@
 import Foundation
 
 struct RatesResponse: Decodable {
-    let base: String
-    let date: String
-    let rates: Dictionary<String, Double>
+    let base: String?
+    let date: String?
+    let rates: Dictionary<String, Double>?
 }

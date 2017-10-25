@@ -18,7 +18,12 @@ class CurrencyModel: NSObject {
         }
         guard let url = URL(string: urlString) else {return}
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 10.0
+        sessionConfig.timeoutIntervalForResource = 20.0
+        let session = URLSession(configuration: sessionConfig)
+        
+        session.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 completion(false)
             }
@@ -32,6 +37,4 @@ class CurrencyModel: NSObject {
             }
             }.resume()
     }
-    
-    
 }
