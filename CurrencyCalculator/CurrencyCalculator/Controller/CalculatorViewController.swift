@@ -136,20 +136,14 @@ class CalculatorViewController: UIViewController {
         }
     }
     // collection view animation methods
-    func expandCollectionView(collectionView: UICollectionView, withWidthConstraint:NSLayoutConstraint) {
+    func animateCollectionView(shouldExpand: Bool, collectionView: UICollectionView, withWidthConstraint:NSLayoutConstraint) {
         UIView.animate(withDuration: 0.3, animations: {
-            withWidthConstraint.constant = self.view.bounds.width - 70
+            withWidthConstraint.constant = shouldExpand == true ? (self.view.bounds.width - 70) : 0
             self.view.layoutIfNeeded()
         })
     }
-    
-    func collapseCollectionView(collectionView: UICollectionView, withWidthConstraint:NSLayoutConstraint) {
-        UIView.animate(withDuration: 0.3, animations: {
-            withWidthConstraint.constant = 0
-            self.view.layoutIfNeeded()
-        })
-    }
-    // Checks if any of the operand buttons is already selected and desects it if needed
+
+    // Checks if any of the operand buttons is already selected and deselects it if needed
     func deselectPreviousButtonIfNeeded() {
         for button in operandsButtonsOutletCollection {
             if button.titleLabel?.text == selectedAction {
@@ -241,13 +235,13 @@ class CalculatorViewController: UIViewController {
 
         if senderConstraint.constant == 0 {
             if opositeConstraint.constant != 0 {
-                collapseCollectionView(collectionView: opositeCollectionView, withWidthConstraint: opositeConstraint)
+                animateCollectionView(shouldExpand: false, collectionView: opositeCollectionView, withWidthConstraint: opositeConstraint)
                 opositeButton.setTitle(opositeCurrency, for: .normal)
             }
-            expandCollectionView(collectionView: senderCollectionView, withWidthConstraint: senderConstraint)
+            animateCollectionView(shouldExpand: true, collectionView: senderCollectionView, withWidthConstraint: senderConstraint)
             sender.setTitle("Cancel", for: .normal)
         } else {
-            collapseCollectionView(collectionView: senderCollectionView, withWidthConstraint: senderConstraint)
+            animateCollectionView(shouldExpand: false, collectionView: senderCollectionView, withWidthConstraint: senderConstraint)
             sender.setTitle(currency, for: .normal)
         }
     }
@@ -274,12 +268,12 @@ extension CalculatorViewController: UICollectionViewDelegate, UICollectionViewDa
             exchangeCurrency = selectedCurrency
             exchangeButton.setTitle(selectedCurrency, for: .normal)
             self.updateExchangeLabel()
-            self.collapseCollectionView(collectionView: exchangeCollectionView, withWidthConstraint: exchangeCollectionViewWidthConstraint)
+            self.animateCollectionView(shouldExpand: false, collectionView: exchangeCollectionView, withWidthConstraint: exchangeCollectionViewWidthConstraint)
         } else {
             sourceCurrency = selectedCurrency!
             sourceCurrencyButton.setTitle(selectedCurrency, for: .normal)
             self.makeCurrencyCall(forCurrency: selectedCurrency!)
-            self.collapseCollectionView(collectionView: sourceCollectionView, withWidthConstraint: sourceCurrencyCollectionViewWidthConstraint)
+            self.animateCollectionView(shouldExpand: false, collectionView: sourceCollectionView, withWidthConstraint: sourceCurrencyCollectionViewWidthConstraint)
         }
     }
 }

@@ -21,7 +21,7 @@ struct Number {
 
 extension Double {
     var formattedWithCommas: String? {
-        if self.isInfinite {
+        if !self.isFinite {
             return "Error"
         }
         return Number.formatterWithCommas.string(from: self as NSNumber)
